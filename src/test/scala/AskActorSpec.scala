@@ -13,22 +13,24 @@ class AskActorSpec extends FlatSpec with Logging {
 
   "An AskActor" should "do somthing" in {
 
-    val actor1 = newActor("Fred")
-    val actor2 = newActor("Wilma")
-    val actor3 = newActor("Barney")
+    val fred = newActor("Fred")
+    val wilma = newActor("Wilma")
+    val barney = newActor("Barney")
 
     logger.info("starting")
 
     implicit val timeout = Timeout(1.seconds)
-    val answer = actor1 ? AskName
-    logger.info("answer: "+answer)
+    logger.info("ask fred his name")
+    val answer = fred ? AskName
+    logger.info("fred's future: "+answer)
 
-    answer.foreach(n => logger.info("foreach answer: "+n))
+    answer.foreach(n => logger.info("fred's answer: "+n))
 
-    val answer1 = actor2 ? AskNameOf(actor3)
-    logger.info("answer1: "+answer1)
+    logger.info("ask wilma to ask barney his name")
+    val answer1 = wilma ? AskNameOf(barney)
+    logger.info("wilma's future: "+answer1)
 
-    answer1.foreach(n1 => logger.info("foreach answer1: "+n1))
+    answer1.foreach(n1 => logger.info("wilma's answer: "+n1))
 
     logger.info("terminating")
     system.terminate()
