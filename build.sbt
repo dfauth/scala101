@@ -17,3 +17,5 @@ libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.0"
 libraryDependencies += "org.apache.logging.log4j" %% "log4j-api-scala" % log4jVersion
 libraryDependencies += "joda-time" % "joda-time" % "2.1"
 libraryDependencies += "org.joda" % "joda-convert" % "1.3"
+libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "latest.release"
+libraryDependencies += "com.typesafe.akka" %% "akka-http-core" % "latest.release"
